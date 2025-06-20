@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ideal Focus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+        body{
+            background-image: url(imagens/bg.png),
+                              url(imagens/ruido.png),
+                              linear-gradient(50deg ,#58585880, #5e5e5e7a);
+                              background-attachment: fixed;
+            width: 98vw;
+            height: 98vh;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column;
+            font-family: Lexend Peta;
+            font-weight: 300;
+        }
+        #principal{
+            background-color: rgba(0, 0, 0, 0.219);
+            padding: 15px;
+            width: 300px;
+            height: 180px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            flex-flow: column nowrap;
+            align-items: center;
+
+        }
+        input{
+            width: 180px;
+            height: 22px;
+            border-radius: 20px;
+            padding-left: 10px;
+        }
+        #ipass{
+            height: 22px;
+        }
+        #go{
+            height: 28px;
+            border: none;
+            width: 180px;
+            border-radius: 20px;
+            background-color: #545a5580;
+            color: white;
+            transition: transform .3s ease;
+        }
+        #go:hover{
+            background-color: #37473a80;
+            transform: scale(1.1);
+            border: 1px solid rgba(0, 0, 0, 0.301);
+        }
+        h1{
+            text-decoration: underline;
+            color: #2e302f;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>IdFocus login</h1>
+    </header>
+    <div id="principal">
+
+        <input type="text" id="iuser" placeholder="User">
+        
+        <br>
+
+        <input type="password" id="ipass" placeholder="Password">
+        
+        <br>
+        <br>
+
+        <button type="submit" id="go" onclick="senhaCorreta()">Go</button>
+    </div>
+</body>
+<script src="scriptindex.js"></script>
+</html>
