@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+        body{
+            background-color: #363d43;
+            color: white;
+            z-index: 1;
+            font-family: Poppins;
+        }
+        h1{
+            font-size: 4em;
+            text-indent: 45px;
+            z-index: 1;
+            text-align: center;
+            
+        }
+        header{
+            border-bottom:1px solid rgba(240, 199, 199, 0.432);
+            z-index: 1;
+            position: relative;
+            height: 27vh;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+main{
+    width: 95%;
+    height: 67vh;
+    border: 2px solid;
+    margin: 30px auto 0px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#principal{
+    width:700px;
+    height: 60vh;
+    border: 2px solid blueviolet;
+    font-family: Poppins;
+    padding:40px 20px;
+    position: absolute;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+#principal_filho{
+    background-color: #2f3438;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.274);
+}
+#row1{
+    display: flex;
+    font-size: 1.8em;
+    margin: 10px;
+    
+}
+#row2{
+    display: flex;
+    font-size: 1.8em;
+    margin: 10px;
+    
+}#row3{
+    display: flex;
+    font-size: 1.8em;
+    margin: 10px;
+    
+}
+#imes{
+    width: 180px;
+    height: 55px;
+    font-size: .7em;
+    padding: 3px 3px 3px 8px;
+    border-radius: 8px;
+    border: none;
+}
+#idia{
+    width: 60px;
+    height: 55px;
+    font-size: .7em;
+    padding: 3px 8px 3px 8px;
+    border-radius: 8px;
+    border: none;
+}
+#itipo{
+    width: 520px;
+    height: 55px;
+    font-size: .7em;
+    padding: 3px 8px 3px 8px;
+    border-radius: 8px;
+    border: none;
+}
+#idesc{
+    width: 380px;
+    height: 55px;
+    font-size: .7em;
+    padding: 3px 3px 3px 8px;
+    border-radius: 8px;
+    border: none;
+    
+}
+#box_mes{
+    width: 200px;
+}
+#btnAdd{
+    height: 55px;
+    width: 120px;
+    font-size: .7em;
+    font-family: poppins;
+    border-radius: 8px;
+    background-color: rgb(58, 58, 148);
+    border: none;
+    color: #fff;
+    margin: 0 12px;
+    transition: transform .3s ease;
+
+}
+#btnAdd:hover{
+    transform: scale(1.1);
+    background-color: rgba(47, 47, 116, 0.836);
+    border: 1px solid rgba(0, 0, 0, 0.096);
+    color: #f0f0f0cc;
+}

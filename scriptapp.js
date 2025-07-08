@@ -7,7 +7,8 @@ Array(      'Bem vindo ' + nome,
             'Eai, '+ nome +' como vai parceiro?',
             'Falaê meu mano ' + nome,
             'Saudações meu parceiro ' + nome,
-            'Bom te ver meu mano ' + nome  )
+            'Bom te ver meu mano ' + nome  
+     )
 
 let escolher = Math.floor(Math.random() * frasesRecepcao.length) 
 
@@ -19,7 +20,9 @@ let escolher = Math.floor(Math.random() * frasesRecepcao.length)
         window.location.href = 'lista.html'
 
     }
-
+    function registroIr(){
+        window.location.href = 'registro.html'
+    }
 
     console.log(frasesRecepcao,escolher)
     console.log(frasesRecepcao[escolher])
