@@ -1,0 +1,26 @@
+let display = document.getElementById('principalPai')
+let recuperarLista = localStorage.getItem('lista') 
+let despesas = JSON.parse(recuperarLista) || []
+
+
+function renderizarDespesas(){
+    
+    let tabela = document.getElementById('tabela')
+    tabela.innerHTML = ''
+    
+    despesas.forEach(despesa => {
+        console.log(`Dia ${despesa.dia} de ${despesa.mes}. Tipo: ${despesa.tipo}. Descrição: ${despesa.descricao}. R$:${despesa.valor}`)
+    
+        let linha = document.createElement('tr')
+
+        linha.innerHTML = `<td id="td_data">${despesa.dia} de ${despesa.mes}</td> <td>${despesa.tipo}</td> <td>${despesa.descricao}</td> <td id="td_valor">R$:${despesa.valor}</td>`
+
+        tabela.appendChild(linha)
+        localStorage.setItem('lista', JSON.stringify(despesas))
+    });
+}
+function limparLista(){
+    despesas = []
+    localStorage.setItem('lista', despesas)
+    window.location.reload()
+}

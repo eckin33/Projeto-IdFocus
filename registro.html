@@ -15,12 +15,17 @@
 
     <main>
         <div id="principal">
+            <div id="navg">
+                <button class="navBtn" onclick="registro()">Registrar</button>
+                <button class="navBtn" onclick="consulta()">Consulta</button>
+            </div>
+            
             <div id="principal_filho">
                 <div id="row1">
                     <div id="box_mes">
                         <label for="imes">Mês</label> <br>
                         <select id="imes">
-                            <option value="janeiro">janeiro</option>
+                            <option value="Janeiro">Janeiro</option>
                             <option value="Fevereiro">Fevereiro</option>
                             <option value="Março">Março</option>
                             <option value="Abril">Abril</option>
@@ -65,9 +70,9 @@
                             <option value="26">26</option>
                             <option value="27">27</option>
                             <option value="28">28</option>
-                            <option value="29">29</option>
-                            <option value="30">30</option>
-                            <option value="31">31</option>
+                            <option value="29" id="o29">29</option>
+                            <option value="30" id="o30">30</option>
+                            <option value="31" id="o31">31</option>
                             <!--MESES COM 31:
                                 JANEIRO
                                 MARÇO
@@ -81,7 +86,11 @@
                             -->
                         </select>
                     </div>
-
+                    <div id="box_valor">
+                        <label for="ivalor">Valor</label> <br>
+                        <input type="number" id="ivalor" placeholder="R$:">
+                    </div>
+                    
                 </div>
                 <div id="row2">
                     <div id="box_tipo">

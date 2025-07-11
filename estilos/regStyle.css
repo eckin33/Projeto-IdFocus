@@ -34,7 +34,6 @@
 main{
     width: 95%;
     height: 67vh;
-    border: 2px solid;
     margin: 30px auto 0px auto;
     display: flex;
     flex-direction: row;
@@ -44,20 +43,51 @@ main{
 #principal{
     width:700px;
     height: 60vh;
-    border: 2px solid blueviolet;
     font-family: Poppins;
     padding:40px 20px;
     position: absolute;
     display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
+    flex-flow: column nowrap;
+    justify-content: space-between;
     align-items: center;
+    gap: 10px;
+    
+}
+#navg{
+    width: 620px;
+    border-radius: 8px;
+    height: 60px;
+    border: 1px solid #9b8d8d46;
+    background-color: #2f3438;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+.navBtn{
+    width: 190px;
+    height: 50px;
+    font-size: 1.2em;
+    font-family: poppins;
+    border-radius: 8px;
+    border: none;
+    background-color: #c9c8c8cc;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.356);
+    transition: .2s ease;
+    color: #fff;
+    margin: 20px 0;
+    
+}
+.navBtn:hover{
+    background-color: #3e4b41e5;
 }
 #principal_filho{
     background-color: #2f3438;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.274);
+    border: 1px solid #9b8d8d46;
+
 }
 #row1{
     display: flex;
@@ -111,6 +141,17 @@ main{
 }
 #box_mes{
     width: 200px;
+}
+#box_valor{
+    margin: 0 20px;
+}
+#ivalor{
+    height: 55px;
+    width: 240px;
+    border-radius: 8px;
+    border: none;
+    font-size: .9em;
+    padding: 0 20px;
 }
 #btnAdd{
     height: 55px;

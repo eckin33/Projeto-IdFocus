@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos/ConsStyle.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=save" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_back" />
+</head>
+<body onload="renderizarDespesas()">
+    
+    <header>
+        <span class="material-symbols-outlined voltarBtn" onclick="location.href='registro.html'">
+            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#Fff"><path d="m287-446.67 240 240L480-160 160-480l320-320 47 46.67-240 240h513v66.66H287Z"/></svg>
+        </span>
+        <h1>Consulta de despesas</h1>
+    </header>
+
+    <main>
+        <div id="filtrosBusca">
+
+        </div>
+
+        <div id="tituloTabela">
+            <span id="s_data">Data</span>
+            <span id="s_tipo">Tipo</span>
+            <span id="s_desc">Descrição</span>
+            <span id="s_valor">Valor</span>
+        </div>
+        <div id="principalPai">
+            <table id="tabela">
+                
+                <tbody>
+
+                </tbody>
+            </table>
+
+
+        </div>
+        <button onclick="limparLista()">Limpar lista</button>
+    </main>
+    <script src="consultaScript.js"></script>
+</body>
+</html>
