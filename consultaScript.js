@@ -1,5 +1,5 @@
 let display = document.getElementById('principalPai')
-let recuperarLista = localStorage.getItem('lista') 
+let recuperarLista = localStorage.getItem('listaDespesas') 
 let despesas = JSON.parse(recuperarLista) || []
 
 
@@ -16,11 +16,12 @@ function renderizarDespesas(){
         linha.innerHTML = `<td id="td_data">${despesa.dia} de ${despesa.mes}</td> <td>${despesa.tipo}</td> <td>${despesa.descricao}</td> <td id="td_valor">R$:${despesa.valor}</td>`
 
         tabela.appendChild(linha)
-        localStorage.setItem('lista', JSON.stringify(despesas))
+        localStorage.setItem('listaDespesas', JSON.stringify(despesas))
     });
 }
 function limparLista(){
     despesas = []
-    localStorage.setItem('lista', despesas)
+    localStorage.setItem('listaDespesas', JSON.stringify(despesas))
     window.location.reload()
 }
+

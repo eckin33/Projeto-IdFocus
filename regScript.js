@@ -36,7 +36,7 @@ _mes.addEventListener('change', () => {
 se nao tiver nada salvo ela so vira uma lista (array) vazia. Desse jeito nao perde nenhuma despesa a não ser que elas
 sejam apagadas por querer.
 */
-const registros = JSON.parse(localStorage.getItem('lista')) || []
+const registros = JSON.parse(localStorage.getItem('listaDespesas')) || []
 
 document.getElementById('btnAdd').addEventListener('click', () => {
     const despesa = {}; //objeto vazio
@@ -52,7 +52,10 @@ document.getElementById('btnAdd').addEventListener('click', () => {
     //Adicionamos atributos para esse objeto (despesa)
 
     registros.push(despesa) //Coloca a despesa na lista
-    localStorage.setItem('lista', JSON.stringify(registros)) //Salva a lista. Agora consulta.html pode recuperar no LocalStorage.
+    localStorage.setItem('listaDespesas', JSON.stringify(registros)) //Salva a lista. Agora consulta.html pode recuperar no LocalStorage.
+
+    desc.value = ''
+    valor.value = ''
 
 })
 
