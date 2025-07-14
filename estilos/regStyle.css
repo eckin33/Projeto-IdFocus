@@ -40,6 +40,12 @@ main{
     justify-content: center;
     align-items: center;
 }
+#homeIco{
+    position: absolute;
+    left: 52px;
+    top: 42px;
+    cursor: pointer;
+}
 #principal{
     width:700px;
     height: 60vh;
@@ -62,10 +68,11 @@ main{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    order: 2;
     
 }
 .navBtn{
-    width: 190px;
+    width: 290px;
     height: 50px;
     font-size: 1.2em;
     font-family: poppins;
