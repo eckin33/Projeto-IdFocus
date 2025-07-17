@@ -12,11 +12,12 @@ body{
             justify-content: center;
             align-items: center;
             flex-flow: column;
-            font-family: Lexend Peta;
-            font-weight: 300;
+            font-family: Poppins;
+            font-weight: 100;
+            font-size: 1.1em;
         }
         #principal{
-            background-color: rgba(0, 0, 0, 0.219);
+            background-color: rgba(0, 0, 0, 0.419);
             padding: 15px;
             width: 300px;
             height: 180px;
@@ -25,21 +26,37 @@ body{
             justify-content: center;
             flex-flow: column nowrap;
             align-items: center;
+            border: 1px solid #37473a80;
+            position: relative;
 
+        }
+        #ico_user{
+            position: absolute;
+            top: 25px;
+            left: 35px;
+        }
+        #ico_pass{
+            position: absolute;
+            top: 80px;
+            left: 35px;
         }
         input{
             width: 180px;
-            height: 22px;
-            border-radius: 20px;
+            height: 28px;
             padding-left: 10px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #575a59;
+            color: #fff;
         }
+        
         #ipass{
-            height: 22px;
+            height: 28px;
         }
         #go{
-            height: 28px;
-            border: none;
-            width: 180px;
+            height: 32px;
+            border: 1px solid #5e5e5e7a;
+            width: 200px;
             border-radius: 20px;
             background-color: #545a5580;
             color: white;

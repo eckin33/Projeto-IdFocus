@@ -179,3 +179,233 @@ main{
     border: 1px solid rgba(0, 0, 0, 0.096);
     color: #f0f0f0cc;
 }
+@media screen and (max-width: 470px) {
+    
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+    }
+        body{
+            background-color: #363d43;
+            color: white;
+            z-index: 1;
+            font-family: Poppins;
+        }
+        h1{
+            font-size: 1.8em;
+            text-indent: 5px;
+            z-index: 1;
+            text-align: center;
+            position: relative;
+            top: 15px;
+            
+        }
+        header{
+            border-bottom:1px solid rgba(240, 199, 199, 0.432);
+            z-index: 1;
+            position: relative;
+            height: 17vh;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+    main{
+        width: 95%;
+        height: 67vh;
+        margin: 30px auto 0px auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    #homeIco{
+        position: absolute;
+        left: 22px;
+        top: 22px;
+        cursor: pointer;
+    }
+    #principal{
+        max-width:450px;
+        width: 350px;
+        height: 60vh;
+        font-family: Poppins;
+        padding:40px 20px;
+        position: absolute;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        
+    }
+    #navg{
+        max-width: 450px;
+        width: 350px;
+        border-radius: 8px;
+        height: 60px;
+        border: 1px solid #9b8d8d46;
+        background-color: #2f3438;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        order: 2;
+        
+    }
+    .navBtn{
+        width: 290px;
+        height: 50px;
+        font-size: 1.2em;
+        font-family: poppins;
+        border-radius: 8px;
+        border: none;
+        background-color: #c9c8c8cc;
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.356);
+        transition: .2s ease;
+        color: #fff;
+        margin: 20px 0;
+        
+    }
+    .navBtn:hover{
+        background-color: #3e4b41e5;
+    }
+    #principal_filho{
+        background-color: #2f3438;
+        padding: 30px;
+        max-width:450px;
+        width: 350px;
+        min-width: 350px;
+        border-radius: 12px;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.274);
+        border: 1px solid #9b8d8d46;
+
+    }
+    #row1{
+        display: flex;
+        font-size: 1.8em;
+        margin: 10px;
+    }
+    #row2{
+        display: flex;
+        font-size: 1.8em;
+        margin: 10px;
+        
+    }#row3{
+        display: flex;
+        font-size: 1.8em;
+        margin: 10px;
+        
+    }
+    #imes{
+        width: 100px;
+        height: 55px;
+        font-size: .7em;
+        padding: 3px 3px 3px 8px;
+        border-radius: 8px;
+        border: none;
+        margin: 0 4px;
+    }
+    #idia{
+        width: 60px;
+        height: 55px;
+        font-size: .7em;
+        padding: 3px 8px 3px 8px;
+        border-radius: 8px;
+        border: none;
+    }
+    #itipo{
+        max-width: 350px;
+        width: 280px;
+        height: 55px;
+        font-size: .7em;
+        padding: 3px 8px 3px 8px;
+        border-radius: 8px;
+        border: none;
+        margin: 0 4px;
+    }
+    #idesc{
+        max-width: 350px;
+        width: 280px;
+        height: 55px;
+        font-size: .7em;
+        padding: 3px 3px 3px 8px;
+        border-radius: 8px;
+        border: none;
+        
+    }
+    #box_mes{
+        width: 200px;
+    }
+    #box_valor{
+        margin: 0 10px;
+    }
+    #box_dia{
+        margin: 0 0 0 10px;
+    }
+    #ivalor{
+        height: 55px;
+        width: 100px;
+        border-radius: 8px;
+        border: none;
+        font-size: .9em;
+        padding: 0 5px;
+    }
+    #btnAdd{
+        height: 55px;
+        width: 120px;
+        font-size: .7em;
+        font-family: poppins;
+        border-radius: 8px;
+        background-color: rgb(58, 58, 148);
+        border: none;
+        color: #fff;
+        margin: 10px 28%;
+        transition: transform .3s ease;
+
+    }
+    #btnAdd:hover{
+        transform: scale(1.1);
+        background-color: rgba(47, 47, 116, 0.836);
+        border: 1px solid rgba(0, 0, 0, 0.096);
+        color: #f0f0f0cc;
+    }
+
+}
+@media screen and (max-width:350px) {
+    h1{
+        font-size: 1.6em;
+    }
+    #principal_filho{
+        max-width: 300px;
+        width: 300px;
+        min-width: 300px;
+        margin: 0 auto;
+        padding: 3px;
+    }
+    #principal{
+        padding: 0;
+    }
+    #navg{
+        max-width: 300px;
+        width: 300px;
+        min-width: 300px;
+    }
+    #imes, #idia, #ivalor, #itipo, #idesc{
+        height: 50px;
+    }
+    #ivalor{
+        font-size: .7em;
+        width: 80px;
+    }
+    label{
+        font-size: .8em;
+    }
+    #itipo, #idesc{
+        width: 265px;
+    }
+}

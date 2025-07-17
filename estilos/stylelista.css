@@ -1,4 +1,4 @@
-*{
+        *{
             
             box-sizing: border-box;
         }
@@ -176,3 +176,108 @@
             height: 34px;
             
         }
+        #voltarIco{
+            position: absolute;
+            top: 42px;
+            left: 52px;
+            cursor: pointer;
+        }
+        @media screen and (max-width:470px){
+            h1{
+                font-size: 2.9em;
+                position: relative;
+                left: -10px;
+            }
+            #addItens{
+                min-width: 320px;
+                width: 90vw;
+                max-width: 390px;
+                font-size: .8em;  
+            }  
+            #addInput{
+                min-width: 290px;
+                width: 80vw;
+                max-width: 300px;
+                font-size: 1.1em;
+            }
+            #listaPrincipal{
+                width: 90vw;
+                min-width: 320px;
+                max-width: 390px;
+                padding: 3px;
+            }
+            #voltarIco{
+                top: 20px;
+                left: 20px;
+            }
+            span{
+                font-size: .7em;
+            }
+            }
+            @media screen and (min-width:471px) and (max-width:600px){
+            h1{
+                font-size: 2.9em;
+                position: relative;
+                left: -10px;
+            }
+            #addItens{
+                min-width: 320px;
+                width: 90vw;
+                max-width: 550px;
+                font-size: .8em;  
+            }  
+            #addInput{
+                min-width: 290px;
+                width: 78vw;
+                max-width: 445px;
+                font-size: 1.1em;
+            }
+            #listaPrincipal{
+                width: 90vw;
+                min-width: 320px;
+                max-width: 550px;
+                padding: 3px;
+            }
+            #voltarIco{
+                top: 20px;
+                left: 20px;
+            }
+            span{
+                font-size: .7em;
+                max-width: 80%;
+            }
+            }
+            @media screen and (max-width:400px){
+            h1{
+                font-size: 2.9em;
+                position: relative;
+                left: -10px;
+            }
+            #addItens{
+                min-width: 320px;
+                width: 90vw;
+                max-width: 390px;
+                font-size: .7em;  
+            }  
+            #addInput{
+                min-width: 290px;
+                width: 60vw;
+                max-width: 300px;
+                font-size: 1.1em;
+                margin: 20px 0 5px 0;
+            }
+            #listaPrincipal{
+                width: 90vw;
+                min-width: 320px;
+                max-width: 390px;
+                padding: 2px;
+            }
+            #voltarIco{
+                top: 20px;
+                left: 20px;
+            }
+            span{
+                font-size: .5em;
+            }
+            
+            }
