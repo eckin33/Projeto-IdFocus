@@ -124,6 +124,9 @@
             font-style: italic;
 
         }
+        span{
+            font-size: 26px;
+        }
         li::marker{
             color: gray;
             font-style: normal;
@@ -187,6 +190,21 @@
                 font-size: 2.9em;
                 position: relative;
                 left: -10px;
+                margin: 20px auto;
+            }
+            .material-symbols-outlined{
+                font-size: 20px;
+                width: 28px;
+                height: 30px;
+                top: 13px;
+                padding: 3px 3px;
+            }
+            header{
+                height: 120px;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
             #addItens{
                 min-width: 320px;
@@ -202,6 +220,7 @@
             }
             #listaPrincipal{
                 width: 90vw;
+                
                 min-width: 320px;
                 max-width: 390px;
                 padding: 3px;
@@ -209,9 +228,10 @@
             #voltarIco{
                 top: 20px;
                 left: 20px;
+                display: none;
             }
             span{
-                font-size: .7em;
+                font-size: 14px;
             }
             }
             @media screen and (min-width:471px) and (max-width:600px){
@@ -219,6 +239,21 @@
                 font-size: 2.9em;
                 position: relative;
                 left: -10px;
+                margin: 20px auto;
+            }
+            .material-symbols-outlined{
+                font-size: 20px;
+                width: 28px;
+                height: 30px;
+                top: 13px;
+                padding: 3px 3px;
+            }
+            header{
+                height: 120px;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
             #addItens{
                 min-width: 320px;
@@ -240,10 +275,11 @@
             }
             #voltarIco{
                 top: 20px;
+                display: none;
                 left: 20px;
             }
             span{
-                font-size: .7em;
+                font-size: 16px;
                 max-width: 80%;
             }
             }
@@ -274,10 +310,11 @@
             }
             #voltarIco{
                 top: 20px;
+                display: none;
                 left: 20px;
             }
             span{
-                font-size: .5em;
+                font-size: 1px;
             }
             
             }

@@ -13,7 +13,7 @@ function renderizarDespesas(){
     
         let linha = document.createElement('tr')
 
-        linha.innerHTML = `<td id="td_data">${despesa.dia} de ${despesa.mes}</td> <td>${despesa.tipo}</td> <td>${despesa.descricao}</td> <td id="td_valor">R$:${despesa.valor}</td>`
+        linha.innerHTML = `<td id="td_data">${despesa.dia} de ${despesa.mes}</td> <td id = "td_tipo">${despesa.tipo}</td> <td id = "td_desc">${despesa.descricao}</td> <td id="td_valor">R$:${despesa.valor}</td>`
 
         tabela.appendChild(linha)
         localStorage.setItem('listaDespesas', JSON.stringify(despesas))

@@ -109,7 +109,7 @@ header{
     }
     header{
         border-bottom: 1px solid rgba(240, 199, 199, 0.432);
-        height: 170px;
+        height: 160px;
         display:flex;
         justify-content: left;
         align-items: center;
@@ -129,7 +129,7 @@ header{
         justify-content: space-evenly;
     }
     .colunasPrincipal{
-        height: 220px;
+        height: 180px;
         border-bottom: 1px solid rgba(128, 128, 128, 0.37);
         margin: 5px;
         border-right: none;
@@ -215,7 +215,7 @@ header{
         justify-content: space-evenly;
     }
     .colunasPrincipal{
-        height: 220px;
+        height: 190px;
         border-bottom: 1px solid rgba(128, 128, 128, 0.37);
         margin: 5px;
         border-right: none;
