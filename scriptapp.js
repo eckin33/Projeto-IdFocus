@@ -4,7 +4,7 @@ console.log(nome)
 let frasesRecepcao = 
 Array(      'Bem vindo ' + nome,
             'Bem vindo de volta '+ nome,
-            'Eai, '+ nome +' como vai parceiro?',
+            'Eai '+ nome +', como vai parceiro?',
             'Falaê meu mano ' + nome,
             'Saudações meu parceiro ' + nome,
             'Bom te ver meu mano ' + nome  
