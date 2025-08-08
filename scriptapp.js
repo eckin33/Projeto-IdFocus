@@ -111,7 +111,7 @@ function registroIr() {
 console.log(frasesRecepcao[escolher])
 
 
-/*
+
 setTimeout(() => {
 
     let teste = document.getElementById("spanNomeCidade");
@@ -197,4 +197,3 @@ setTimeout(() => {
     }
 
 }, 3000)
-*/
