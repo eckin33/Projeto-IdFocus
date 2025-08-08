@@ -4,6 +4,7 @@ function senhaCorreta() {
 
     if (senha === '.') {
         localStorage.setItem("userLogado", user);
+        pegarLocUser()
         window.location.href = 'app.html';
     } else {
         alert('Senha incorreta.');
@@ -27,6 +28,5 @@ function pegarLocUser() {
 
 }
 
-pegarLocUser()
 console.log(navigator.userAgent)
 
