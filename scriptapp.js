@@ -8,7 +8,7 @@ const longitude = JSON.parse(localStorage.getItem("longitude")) || [] // Latitud
 async function obterCidadeUsuario() {
     console.log(typeof (Latitude))
     const apiKey = '8c23ddee47c2f7b5b6beee49428d169a'
-    const url = `http://api.openweathermap.org/geo/1.0/reverse?lat=${Latitude}&lon=${longitude}&appid=${apiKey}`
+    const url = `https://api.openweathermap.org/geo/1.0/reverse?lat=${Latitude}&lon=${longitude}&appid=${apiKey}`
     const urlCidade = `https://api.openweathermap.org/data/2.5/weather?q=${cidadeUserRecuperada}&appid=${apiKey}&units=metric&lang=pt_br`
 
 
@@ -178,7 +178,7 @@ setTimeout(() => {
                 let escolherFraseClima28mais = Math.floor(Math.random() * frasesTemperatura28mais.length)
                 let escolherFraseClima27menos = Math.floor(Math.random() * frasesTemperatura20mais27menos.length)
                 let escolherFraseClima20menos = Math.floor(Math.random() * frasesTemperatura20menos.length)
-                if (dadosBuscaCidade_brave.temp <= 28 /*Da pra colocar logica de Horario aqui*/) {
+                if (dadosBuscaCidade_brave.temp <= 28 ) {
                     document.getElementById('spanLegenda').textContent = frasesTemperatura20mais27menos[escolherFraseClima27menos]
                 }
                 if (dadosBuscaCidade_brave.temp <= 20) {
