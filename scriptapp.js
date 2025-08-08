@@ -1,8 +1,8 @@
 const nome = localStorage.getItem("userLogado");
 const cidadeUserRecuperada = JSON.parse(localStorage.getItem("cidadeUser")) //Metodo Tradicional
 const cidadeSalva = JSON.parse(localStorage.getItem("cidade_brave")) //Metodo Brave
-const Latitude = JSON.parse(localStorage.getItem("latitude")) || []
-const longitude = JSON.parse(localStorage.getItem("longitude")) || [] // Latitude e Longitude que veio do index.html
+const Latitude = JSON.parse(localStorage.getItem("latitude")) 
+const longitude = JSON.parse(localStorage.getItem("longitude"))  // Latitude e Longitude que veio do index.html
 
 
 async function obterCidadeUsuario() {
@@ -16,7 +16,7 @@ async function obterCidadeUsuario() {
     const dados = await resposta.json();
 
     const nomeCidade = dados[0].name
-    let nomeCidadeUser = nomeCidade
+    const nomeCidadeUser = nomeCidade
 
     localStorage.setItem('cidadeUser', JSON.stringify(nomeCidadeUser))
 
