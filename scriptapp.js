@@ -4,23 +4,23 @@ const cidadeSalva = JSON.parse(localStorage.getItem("cidade_brave")) //Metodo Br
 const Latitude = JSON.parse(localStorage.getItem("latitude")) 
 const longitude = JSON.parse(localStorage.getItem("longitude"))  // Latitude e Longitude que veio do index.html
 
+console.log(cidadeUserRecuperada)
 
 async function obterCidadeUsuario() {
     console.log(typeof (Latitude))
     const apiKey = '8c23ddee47c2f7b5b6beee49428d169a'
     const url = `https://api.openweathermap.org/geo/1.0/reverse?lat=${Latitude}&lon=${longitude}&appid=${apiKey}`
-    const urlCidade = `https://api.openweathermap.org/data/2.5/weather?q=${cidadeUserRecuperada}&appid=${apiKey}&units=metric&lang=pt_br`
-
-
+    
+    
     const resposta = await fetch(url);
     const dados = await resposta.json();
-
+    
     const nomeCidade = dados[0].name
-    const nomeCidadeUser = nomeCidade
+    localStorage.setItem("cidadeUser", JSON.stringify(nomeCidade))
+    
+    const urlCidade = `https://api.openweathermap.org/data/2.5/weather?q=${nomeCidade}&appid=${apiKey}&units=metric&lang=pt_br`
 
-    localStorage.setItem('cidadeUser', JSON.stringify(nomeCidadeUser))
-
-    const respostaBuscaCidade = await fetch(urlCidade);
+    const respostaBuscaCidade = await fetch(urlCidade);    // linha 23
     const dadosBuscaCidade = await respostaBuscaCidade.json();
 
     console.log(dadosBuscaCidade)
@@ -111,7 +111,7 @@ function registroIr() {
 console.log(frasesRecepcao[escolher])
 
 
-
+/*
 setTimeout(() => {
 
     let teste = document.getElementById("spanNomeCidade");
@@ -133,7 +133,6 @@ setTimeout(() => {
             const respostaBuscaCidade_brave = await fetch(urlCidade_brave);
             const dadosBuscaCidade_brave = await respostaBuscaCidade_brave.json();
 
-            console.log(dadosBuscaCidade_brave)
             if (dadosBuscaCidade_brave.cod === 200) {
                 mostrarInfos({
                     icone: dadosBuscaCidade_brave.weather[0].icon,
@@ -198,3 +197,4 @@ setTimeout(() => {
     }
 
 }, 3000)
+*/
