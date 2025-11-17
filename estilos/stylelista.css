@@ -1,43 +1,121 @@
-        *{
-            
+        * {
+
             box-sizing: border-box;
         }
-        body{
+
+        body {
             background-color: #363d43;
             color: white;
             z-index: 1;
             font-family: Poppins;
         }
-        h1{
+
+        h1 {
             font-size: 5em;
             text-indent: 45px;
             z-index: 1;
             text-align: center;
-            
+
         }
-        header{
-            border-bottom:1px solid rgba(240, 199, 199, 0.432);
+
+        header {
+            border-bottom: 1px solid rgba(240, 199, 199, 0.432);
             z-index: 1;
             position: relative;
         }
-        section{
+
+        section {
             font-size: 1.3em;
             margin: 20px 0 20px 45px;
             z-index: 1;
         }
-        main{
+
+        main {
             margin: auto auto;
             width: 96%;
             height: 69vh;
-            display:flex;
+            display: flex;
             justify-content: center;
             align-items: center;
             flex-flow: column nowrap;
         }
-        ol{
+
+        .menu {
+            width: 80px;
+            height: 50px;
+            font-size: 20px;
+            padding: 3px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 5px 5px 5px;
+            box-shadow: 2px solid rgba(0, 0, 0, 0.37);
+            color: black;
+            background-color: #e0e9f1;
+            position: absolute;
+        }
+
+        .menu:hover {
+            background-color: #cecdbd;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .inputEditar {
+            height: 50px;
+            width: 60%;
+            font-size: 22px;
+            text-indent: 15px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 4px;
+            border-radius: 12px;
+            border: 1px solid #f3f3ff96;
+        }
+
+        .fecharInput {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 11;
+        }
+
+        .modal-overlay{
+            position: fixed;
+            z-index: 10;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            /* Aplica o blur no fundo */
+            -webkit-backdrop-filter: blur(10px);
+            /* Para Safari */
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+
+        ol {
             border: 4px solid rgb(88, 88, 88);
-            border-top:none;
-            border-radius:0 0 10px 10px;
+            border-top: none;
+            border-radius: 0 0 10px 10px;
             background-color: white;
             color: black;
             height: 800px;
@@ -54,25 +132,30 @@
             flex-flow: column;
             justify-content: flex-start;
         }
-        li{
+
+        li {
             position: absolute;
             top: 0;
             left: 0;
             text-decoration: none;
             text-align: left;
         }
-        .teste{
+
+        .teste {
             border: none;
             height: 40px;
         }
-        .text:selected{
+
+        .text:selected {
             border: none;
         }
-        #listaPrincipal{
+
+        #listaPrincipal {
             margin: 0;
         }
-        #addItens{
-            border: 4px solid rgb(88,88,88);
+
+        #addItens {
+            border: 4px solid rgb(88, 88, 88);
             border-bottom: none;
             min-width: 570px;
             background-color: #2f5781;
@@ -85,12 +168,14 @@
             position: relative;
             z-index: 10;
         }
-        #addItens span{
+
+        #addItens span {
             font-size: 1.7em;
             margin: 8px;
 
         }
-        #addInput{
+
+        #addInput {
             margin: 30px 20px 10px 20px;
             height: 40px;
             border-radius: 20px;
@@ -99,9 +184,10 @@
             width: 54vw;
             max-width: 920px;
             font-size: 1.25em;
-            border:none;
+            border: none;
         }
-        #btn_add{
+
+        #btn_add {
             padding: 7px;
             border: none;
             height: 28px;
@@ -109,13 +195,15 @@
             border-radius: 8px;
             transition: transform .3s ease;
         }
-        #btn_add:hover{
+
+        #btn_add:hover {
             transform: scale(1.1);
             cursor: pointer;
             background-color: rgb(140, 192, 124);
             border: 1px solid white;
         }
-        li{
+
+        li {
             border-bottom: 1px solid rgba(128, 128, 128, 0.473);
             margin: 4px 4px 4px 4px;
             padding: 6px;
@@ -124,17 +212,21 @@
             font-style: italic;
 
         }
-        span{
+
+        span {
             font-size: 26px;
         }
-        li::marker{
+
+        li::marker {
             color: gray;
             font-style: normal;
         }
-        li:hover{
+
+        li:hover {
             background-color: rgba(241, 232, 205, 0.452);
         }
-        .material-symbols-outlined{
+
+        .material-symbols-outlined {
             position: absolute;
             right: 5px;
             top: 5px;
@@ -142,13 +234,15 @@
             border: none;
             border-radius: 4px;
             background-color: #ea5f54;
-            
+
             height: 40px;
         }
-        .material-symbols-outlined:hover{
+
+        .material-symbols-outlined:hover {
             background-color: #ee4b3f;
         }
-        .save{
+
+        .save {
             background-color: transparent;
             border: none;
             width: 24px;
@@ -158,18 +252,21 @@
             transition: transform .3s ease;
             margin: 3px;
         }
-        .save:hover{
+
+        .save:hover {
             transform: scale(1.2);
             cursor: pointer;
         }
-        .check{
+
+        .check {
             all: unset;
             width: 34px;
             height: 34px;
             border: 1px solid black;
             border-radius: 3px;
         }
-        .check:checked{
+
+        .check:checked {
             background-image: url('../imagens/checkmarcado.png');
             background-size: contain;
             border-radius: 3px;
@@ -177,144 +274,167 @@
             background-color: #2e9080;
             width: 34px;
             height: 34px;
-            
+
         }
-        #voltarIco{
+
+        #voltarIco {
             position: absolute;
             top: 42px;
             left: 52px;
             cursor: pointer;
         }
-        @media screen and (max-width:470px){
-            h1{
+
+        @media screen and (max-width:470px) {
+            h1 {
                 font-size: 2.9em;
                 position: relative;
                 left: -10px;
                 margin: 20px auto;
             }
-            .material-symbols-outlined{
+
+            .material-symbols-outlined {
                 font-size: 20px;
                 width: 28px;
                 height: 30px;
                 top: 13px;
                 padding: 3px 3px;
             }
-            header{
+
+            header {
                 height: 120px;
                 padding: 0;
                 display: flex;
                 justify-content: center;
                 align-items: center;
             }
-            #addItens{
+
+            #addItens {
                 min-width: 320px;
                 width: 90vw;
                 max-width: 390px;
-                font-size: .8em;  
-            }  
-            #addInput{
+                font-size: .8em;
+            }
+
+            #addInput {
                 min-width: 290px;
                 width: 80vw;
                 max-width: 300px;
                 font-size: 1.1em;
             }
-            #listaPrincipal{
+
+            #listaPrincipal {
                 width: 90vw;
-                
+
                 min-width: 320px;
                 max-width: 390px;
                 padding: 3px;
             }
-            #voltarIco{
+
+            #voltarIco {
                 top: 20px;
                 left: 20px;
                 display: none;
             }
-            span{
+
+            span {
                 font-size: 14px;
             }
-            }
-            @media screen and (min-width:471px) and (max-width:600px){
-            h1{
+        }
+
+        @media screen and (min-width:471px) and (max-width:600px) {
+            h1 {
                 font-size: 2.9em;
                 position: relative;
                 left: -10px;
                 margin: 20px auto;
             }
-            .material-symbols-outlined{
+
+            .material-symbols-outlined {
                 font-size: 20px;
                 width: 28px;
                 height: 30px;
                 top: 13px;
                 padding: 3px 3px;
             }
-            header{
+
+            header {
                 height: 120px;
                 padding: 0;
                 display: flex;
                 justify-content: center;
                 align-items: center;
             }
-            #addItens{
+
+            #addItens {
                 min-width: 320px;
                 width: 90vw;
                 max-width: 550px;
-                font-size: .8em;  
-            }  
-            #addInput{
+                font-size: .8em;
+            }
+
+            #addInput {
                 min-width: 290px;
                 width: 78vw;
                 max-width: 445px;
                 font-size: 1.1em;
             }
-            #listaPrincipal{
+
+            #listaPrincipal {
                 width: 90vw;
                 min-width: 320px;
                 max-width: 550px;
                 padding: 3px;
             }
-            #voltarIco{
+
+            #voltarIco {
                 top: 20px;
                 display: none;
                 left: 20px;
             }
-            span{
+
+            span {
                 font-size: 16px;
                 max-width: 80%;
             }
-            }
-            @media screen and (max-width:400px){
-            h1{
+        }
+
+        @media screen and (max-width:400px) {
+            h1 {
                 font-size: 2.9em;
                 position: relative;
                 left: -10px;
             }
-            #addItens{
+
+            #addItens {
                 min-width: 320px;
                 width: 90vw;
                 max-width: 390px;
-                font-size: .7em;  
-            }  
-            #addInput{
+                font-size: .7em;
+            }
+
+            #addInput {
                 min-width: 290px;
                 width: 60vw;
                 max-width: 300px;
                 font-size: 1.1em;
                 margin: 20px 0 5px 0;
             }
-            #listaPrincipal{
+
+            #listaPrincipal {
                 width: 90vw;
                 min-width: 320px;
                 max-width: 390px;
                 padding: 2px;
             }
-            #voltarIco{
+
+            #voltarIco {
                 top: 20px;
                 display: none;
                 left: 20px;
             }
-            span{
+
+            span {
                 font-size: 14px;
             }
-            
-            }
+
+        }

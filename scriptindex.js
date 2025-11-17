@@ -26,7 +26,6 @@ function pegarLocUser() {
     })
 
 }
-
 console.log(navigator.userAgent)
 pegarLocUser()
 
