@@ -1,3 +1,10 @@
+const token = localStorage.getItem("token");
+
+if (!token) {
+    window.location.href = "/login.html";
+}
+
+
 let lista = JSON.parse(localStorage.getItem("lista")) || []
 const tarefas = JSON.parse
 
@@ -60,18 +67,18 @@ function renderizarLista() {
 
         //evento(mouse botao direito)
         li.oncontextmenu = (e) => {
-                alvo = e.target
+            alvo = e.target
 
-                console.log('elemento: ', alvo)
-                //Previne o menu do navegador (inspecionar e tal)
-                e.preventDefault()
+            console.log('elemento: ', alvo)
+            //Previne o menu do navegador (inspecionar e tal)
+            e.preventDefault()
 
-                //Coordenadas do click
-                let cordX = e.pageX
-                let cordY = e.pageY
+            //Coordenadas do click
+            let cordX = e.pageX
+            let cordY = e.pageY
 
-                //Vai como parâmetro da função... Que lindo
-                clickDireito(cordX, cordY)   
+            //Vai como parâmetro da função... Que lindo
+            clickDireito(cordX, cordY)
         }
     })
 }
@@ -120,20 +127,20 @@ function clickDireito(x, y) {
                 //"alvo" foi declarado la em cima, é o alvo do click direito.
                 //O alvo mesmo foi o "li", ai a gente pega o filho dele, o "span".
                 let filhoAlvo = alvo.querySelector("span")
-                
+
                 //Depois criamos o input, adicionamos a classe que na no css
                 let inputEditar = document.createElement("input")
                 inputEditar.attributes = 'text'
                 inputEditar.classList.add("inputEditar")
-                
+
                 //Efeito blur atrás do input
                 let paiInput = document.createElement("div")
                 paiInput.classList.add("modal-overlay")
                 paiInput.classList.add("active")
-                
+
                 paiInput.appendChild(inputEditar)
                 document.body.appendChild(paiInput)
-                
+
                 //fechar o menu editar
                 menu.remove()
 
@@ -144,29 +151,29 @@ function clickDireito(x, y) {
                 document.body.appendChild(fecharInput)
 
                 //Função de fechamento
-                fecharInput.onclick = () =>{
+                fecharInput.onclick = () => {
                     inputEditar.remove()
                     fecharInput.remove()
                     paiInput.classList.remove("active")
                 }
-            
+
                 //Evento de Keydown, aqui o valor do "span" vai mudar de fato.
-                inputEditar.addEventListener("keydown", (e) =>{
-                    if(e.key === "Enter"){
+                inputEditar.addEventListener("keydown", (e) => {
+                    if (e.key === "Enter") {
 
                         //Armazena a tarefa antiga e a nova
                         const textoAntigo = filhoAlvo.innerText.trim()
                         const novoTexto = inputEditar.value.trim()
 
-                        if(novoTexto === "") return
+                        if (novoTexto === "") return
 
                         //atualiza visualmente
                         filhoAlvo.innerText = novoTexto
-                        
+
                         //Atualiza no localStorage
                         const index = lista.findIndex(item => item.texto === textoAntigo)
-                        
-                        if(index !== 1){
+
+                        if (index !== 1) {
                             lista[index].texto = novoTexto
                             salvarListaNoLocalStorage()
                         }
@@ -174,12 +181,12 @@ function clickDireito(x, y) {
                         removerGuys()
                     }
                 })
-                function removerGuys(){
+                function removerGuys() {
                     paiInput.classList.remove("active")
                     fecharInput.remove()
                     inputEditar.remove()
 
-                }   
+                }
             }
         })
     }

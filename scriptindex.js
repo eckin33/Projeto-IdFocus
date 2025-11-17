@@ -1,4 +1,4 @@
-function senhaCorreta() {
+/* function senhaCorreta() {
     const senha = document.getElementById('ipass').value;
     const user = document.getElementById('iuser').value;
 
@@ -14,6 +14,25 @@ let enter = document.getElementById('ipass').addEventListener('keydown', (e) => 
     if (e.key === 'Enter') senhaCorreta()
 
 })
+ */
+
+document.getElementById("go").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const formData = {
+            user: document.getElementById('iuser').value,
+            password: document.getElementById('ipass').value
+        };
+
+        const response = await fetch("https://backend-idf.vercel.app/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+        console.log(result);
+    });
 
 function pegarLocUser() {
     navigator.geolocation.getCurrentPosition(function (position) {

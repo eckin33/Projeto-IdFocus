@@ -1,7 +1,13 @@
+const token = localStorage.getItem("token");
+
+if (!token) {
+    window.location.href = "/login.html";
+}
+
 const nome = localStorage.getItem("userLogado");
 const cidadeUserRecuperada = JSON.parse(localStorage.getItem("cidadeUser")) //Metodo Tradicional
 const cidadeSalva = JSON.parse(localStorage.getItem("cidade_brave")) //Metodo Brave
-const Latitude = JSON.parse(localStorage.getItem("latitude")) 
+const Latitude = JSON.parse(localStorage.getItem("latitude"))
 const longitude = JSON.parse(localStorage.getItem("longitude"))  // Latitude e Longitude que veio do index.html
 
 console.log(cidadeUserRecuperada)
@@ -10,14 +16,14 @@ async function obterCidadeUsuario() {
     console.log(typeof (Latitude))
     const apiKey = '8c23ddee47c2f7b5b6beee49428d169a'
     const url = `https://api.openweathermap.org/geo/1.0/reverse?lat=${Latitude}&lon=${longitude}&appid=${apiKey}`
-    
-    
+
+
     const resposta = await fetch(url);
     const dados = await resposta.json();
-    
+
     const nomeCidade = dados[0].name
     localStorage.setItem("cidadeUser", JSON.stringify(nomeCidade))
-    
+
     const urlCidade = `https://api.openweathermap.org/data/2.5/weather?q=${nomeCidade}&appid=${apiKey}&units=metric&lang=pt_br`
 
     const respostaBuscaCidade = await fetch(urlCidade);    // linha 23
@@ -177,7 +183,7 @@ setTimeout(() => {
                 let escolherFraseClima28mais = Math.floor(Math.random() * frasesTemperatura28mais.length)
                 let escolherFraseClima27menos = Math.floor(Math.random() * frasesTemperatura20mais27menos.length)
                 let escolherFraseClima20menos = Math.floor(Math.random() * frasesTemperatura20menos.length)
-                if (dadosBuscaCidade_brave.temp <= 28 ) {
+                if (dadosBuscaCidade_brave.temp <= 28) {
                     document.getElementById('spanLegenda').textContent = frasesTemperatura20mais27menos[escolherFraseClima27menos]
                 }
                 if (dadosBuscaCidade_brave.temp <= 20) {

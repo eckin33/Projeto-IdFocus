@@ -1,3 +1,10 @@
+const token = localStorage.getItem("token");
+
+  if (!token) {
+    window.location.href = "/login.html";
+  }
+
+
 let _mes = document.getElementById('imes')
 let _dias = document.getElementById('idia')
 let _31 = document.getElementById('o31')

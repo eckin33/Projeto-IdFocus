@@ -1,3 +1,9 @@
+const token = localStorage.getItem("token");
+
+  if (!token) {
+    window.location.href = "/login.html";
+  }
+
 let display = document.getElementById('principalPai')
 let recuperarLista = localStorage.getItem('listaDespesas') 
 let despesas = JSON.parse(recuperarLista) || []
