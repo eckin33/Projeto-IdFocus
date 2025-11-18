@@ -1,7 +1,7 @@
 const token = localStorage.getItem("token");
 
   if (!token) {
-    window.location.href = "/login.html";
+    window.location.href = "Projeto-IdFocus/login.html";
   }
 
 let display = document.getElementById('principalPai')
