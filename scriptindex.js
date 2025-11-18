@@ -17,22 +17,22 @@ let enter = document.getElementById('ipass').addEventListener('keydown', (e) => 
  */
 
 document.getElementById("formLogin").addEventListener("submit", async (e) => {
-        e.preventDefault();
+    e.preventDefault();
 
-        const formData = {
-            user: document.getElementById('iuser').value,
-            password: document.getElementById('ipass').value
-        };
+    const formData = {
+        email: document.getElementById('iuser').value,
+        password: document.getElementById('ipass').value
+    };
 
-        const response = await fetch("https://backend-idf.vercel.app/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData)
-        });
-
-        const result = await response.json();
-        console.log(result);
+    const response = await fetch("https://backend-idf.vercel.app/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
     });
+
+    const result = await response.json();
+    console.log(result);
+});
 
 function pegarLocUser() {
     navigator.geolocation.getCurrentPosition(function (position) {
