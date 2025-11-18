@@ -16,7 +16,7 @@ let enter = document.getElementById('ipass').addEventListener('keydown', (e) => 
 })
  */
 
-document.getElementById("go").addEventListener("submit", async (e) => {
+document.getElementById("formCadastro").addEventListener("submit", async (e) => {
         e.preventDefault();
 
         const formData = {
