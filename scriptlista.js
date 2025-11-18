@@ -1,7 +1,7 @@
 const token = localStorage.getItem("token");
 
 if (!token) {
-    window.location.href = "Projeto-IdFocus/login.html";
+    window.location.href = "https://eckin33.github.io/Projeto-IdFocus/login.html";
 }
 
 
