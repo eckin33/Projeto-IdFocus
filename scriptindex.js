@@ -32,6 +32,20 @@ document.getElementById("formLogin").addEventListener("submit", async (e) => {
 
     const result = await response.json();
     console.log(result);
+
+    // Verificar se o registro foi bem-sucedido
+    if (result.token) {
+        let meuToken = result.token
+        let userName = result.user.name
+
+        localStorage.setItem("userLogado", userName)
+        localStorage.setItem("token", meuToken)
+
+        window.location.href = "app.html"
+    } else {
+        alert("Login falhou. Tente novamente.");
+        return;
+    }
 });
 
 function pegarLocUser() {

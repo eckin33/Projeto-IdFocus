@@ -65,12 +65,14 @@
     document.getElementById("formCadastro").addEventListener("submit", async (e) => {
         e.preventDefault();
 
+        //Pegar os dados do formulário
         const formData = {
             name: document.getElementById('iname').value,
             email: document.getElementById('iuser').value,
             password: document.getElementById('ipass').value
         };
 
+        //Enviar os dados para o backend
         const response = await fetch("https://backend-idf.vercel.app/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -79,6 +81,17 @@
 
         const result = await response.json();
         console.log(result);
+
+        // Verificar se o registro foi bem-sucedido
+        if (result.user) {
+            alert("Cadastro realizado com sucesso! Agora você pode fazer login.");
+            window.location.href = "./login.html";
+            
+        } else {
+            alert("Registro falhou. Tente novamente.");
+            return;
+        }
+
     });
 </script>
 
