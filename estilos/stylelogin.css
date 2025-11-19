@@ -56,6 +56,7 @@ body{
     border: 1px solid rgba(255, 255, 255, 0.082);
     box-shadow: 0 8px 30px rgba(0,0,0,0.6);
     padding: 18px 20px;
+    height: 340px;
     width: 320px;
     max-width: calc(100% - 40px);
     border-radius: 14px;
@@ -107,7 +108,7 @@ input:focus{
 
 #go{
     margin-top: 8px;
-    margin-bottom: 8px;
+    margin-bottom: 18px;
     height: 40px;
     border: none;
     width: 220px;
@@ -157,4 +158,20 @@ select:-moz-autofill {
 }
 
 
-#principal h4{ color: #fff !important; }
+#principal h4{ 
+    color: #fff !important; 
+    margin-top: 10px;
+    margin-bottom: 18px;
+}
+
+#jaTem{
+    margin-top: 12px;
+    color: #ffffff77;
+}
+#a_jaTem{
+    color: #ffffffaa;
+    text-decoration: none;
+}
+#a_jaTem:hover{
+    text-decoration: underline;
+}

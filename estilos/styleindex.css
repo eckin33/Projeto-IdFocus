@@ -91,7 +91,7 @@ input {
 }
 
 h4 {
-    font-size: 1.5em;
+    font-size: 1.6em;
     color: white;
     margin-bottom: 15px;
 }
@@ -168,8 +168,21 @@ select:-moz-autofill {
     border-bottom-right-radius: 12px !important;
 }
 
-/* Ensure h4 is white */
+
 #principal h4{
+    font-size: 1.6em;
     margin-top: 20px;
     color: #ffffff !important;
+}
+
+#jaTem{
+    margin-top: 12px;
+    color: #ffffff77;
+}
+#a_jaTem{
+    color: #ffffffaa;
+    text-decoration: none;
+}
+#a_jaTem:hover{
+    text-decoration: underline;
 }
