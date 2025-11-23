@@ -3,6 +3,24 @@ const token = localStorage.getItem("token");
 if (!token) {
     window.location.href = "./login.html";
 }
+if(token){
+    try{
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        const exp = payload.exp;
+        const currentTime = Math.floor(Date.now() / 1000);
+
+        if (currentTime > exp) {
+            alert("Sessão expirada. Faça login novamente.");
+            localStorage.removeItem("token");
+            window.location.href = "./login.html";
+        }
+
+    }catch(error){
+        console.error("Token inválido:", error);
+        localStorage.removeItem("token");
+        window.location.href = "./login.html";
+    }
+}
 
 
 let lista = JSON.parse(localStorage.getItem("lista")) || []

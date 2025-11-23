@@ -1,23 +1,9 @@
-/* function senhaCorreta() {
-    const senha = document.getElementById('ipass').value;
-    const user = document.getElementById('iuser').value;
-
-    if (senha === '.') {
-        localStorage.setItem("userLogado", user);
-        window.location.href = 'app.html';
-    } else {
-        alert('Senha incorreta.');
-    }
-}
-
-let enter = document.getElementById('ipass').addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') senhaCorreta()
-
-})
- */
-
+let load = document.getElementById('load')
+load.style.display = 'none'
 document.getElementById("formLogin").addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    load.style.display = 'inline-block'
 
     const formData = {
         email: document.getElementById('iuser').value,
@@ -35,6 +21,9 @@ document.getElementById("formLogin").addEventListener("submit", async (e) => {
 
     // Verificar se o registro foi bem-sucedido
     if (result.token) {
+
+        load.style.display = 'none'
+
         let meuToken = result.token
         let userName = result.user.name
 
@@ -43,6 +32,7 @@ document.getElementById("formLogin").addEventListener("submit", async (e) => {
 
         window.location.href = "app.html"
     } else {
+        load.style.display = 'none'
         alert("Login falhou. Tente novamente.");
         return;
     }

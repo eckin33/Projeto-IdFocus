@@ -1,8 +1,26 @@
 const token = localStorage.getItem("token");
 
-  if (!token) {
+if (!token) {
     window.location.href = "./login.html";
-  }
+}
+if (token) {
+    try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        const exp = payload.exp;
+        const currentTime = Math.floor(Date.now() / 1000);
+
+        if (currentTime > exp) {
+            alert("Sessão expirada. Faça login novamente.");
+            localStorage.removeItem("token");
+            window.location.href = "./login.html";
+        }
+
+    } catch (error) {
+        console.error("Token inválido:", error);
+        localStorage.removeItem("token");
+        window.location.href = "./login.html";
+    }
+}
 
 
 let _mes = document.getElementById('imes')
@@ -24,17 +42,17 @@ _mes.addEventListener('change', () => {
     const valorSelecionado = _mes.value
     console.log('Selecionou: ' + valorSelecionado)
 
-    if(valorSelecionado == 'Fevereiro'){
+    if (valorSelecionado == 'Fevereiro') {
         _29.style.display = 'none'
         _30.style.display = 'none'
         _31.style.display = 'none'
     }
-    else{
+    else {
         _29.style.display = 'block'
         _30.style.display = 'block'
         _31.style.display = 'block'
     }
-    if(valorSelecionado == 'Abril'||valorSelecionado == 'Junho'|| valorSelecionado == 'Setembro'||valorSelecionado == 'Novembro'){
+    if (valorSelecionado == 'Abril' || valorSelecionado == 'Junho' || valorSelecionado == 'Setembro' || valorSelecionado == 'Novembro') {
         _31.style.display = 'none'
     }
 })
@@ -53,7 +71,7 @@ document.getElementById('btnAdd').addEventListener('click', () => {
     despesa.dia = _dias.value
     despesa.tipo = tipo.value
     despesa.descricao = desc.value
-    despesa.id = id 
+    despesa.id = id
     despesa.valor = valor.value
 
     //Adicionamos atributos para esse objeto (despesa)
@@ -66,7 +84,7 @@ document.getElementById('btnAdd').addEventListener('click', () => {
 
 })
 
-function consulta(){
+function consulta() {
     window.location.href = 'consulta.html'
 }
 
