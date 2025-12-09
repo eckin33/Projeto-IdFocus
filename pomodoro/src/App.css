@@ -1,0 +1,154 @@
+.App {
+  width: 85vw;
+  height: 55vh;
+  min-height: 55vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: #20232e;
+  color: white;
+  font-size: 24px;
+  padding-bottom: 30px;
+}
+
+#root h2 {
+  font-size: 44px;
+}
+
+.ativo {
+  background: linear-gradient(-330deg, #195fec, #091fe2b4);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+  border: none;
+}
+
+.pausar {
+  background: linear-gradient(-330deg, #35e1ff34, #17305f3f);
+  box-shadow: 0 8px 20px rgba(20, 194, 224, 0.15);
+  border: none;
+}
+
+#startBtn:hover {
+  border: 1px solid #ffffff3a;
+}
+
+#timer {
+  height: 75%;
+
+  font-size: 300px;
+  color: #ffffffdc;
+  text-shadow: -4px 2px 20px rgba(0, 0, 0, 0.226);
+  text-align: center;
+  width: 90%;
+}
+
+#menuBtn {
+  position: absolute;
+  right: 28px;
+  top: 28px;
+  background-color: #181c24;
+}
+
+.offcanvaBg {
+  background-color: #25272c;
+  color: #ffffff;
+}
+
+.offcanvaBg input {
+
+  box-sizing: border-box;
+  width: 70%;
+  height: 38px;
+  padding-left: 44px;
+  background-color: rgba(87, 90, 89, 0.14);
+  border-radius: 10px;
+  border: 1px solid rgba(87, 90, 89, 0.12);
+  color: #fff;
+  margin: 6px 0;
+  position: relative;
+  transition: box-shadow .18s ease, transform .12s ease;
+  font-size: 0.95rem;
+
+}
+
+button {
+  background-color: #181c24;
+}
+
+#box-botoes {
+  margin: 12px 0;
+  display: flex;
+  gap: 25px;
+  margin-left: 18px;
+}
+
+#box-botoes button {
+  width: auto;
+  height: auto;
+}
+
+#mesageDiv {
+  position: absolute;
+  left: 38px;
+  bottom: 28px;
+}
+
+@media screen and (max-width: 450px) {
+  .App {
+    width: 90%;
+    height: 55vh;
+    min-height: 55vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    height: 100vh;
+    width: 100vw;
+    background-color: #20232e;
+    color: white;
+    font-size: 24px;
+    padding-bottom: 30px;
+  }
+
+  #root h2 {
+    font-size: 32px;
+  }
+
+  #timer {
+    width: 250px;
+    max-width: 300px;
+    font-size: 100px;
+  }
+
+  #box-botoes {
+    margin: 12px 0;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 25px;
+    margin-left: 18px;
+    max-width: 350px;
+  }
+  #box-botoes button{
+    width: auto;
+    height: auto;
+    font-size: 18px;
+    padding: 8px 12px;
+
+  }
+
+
+}
