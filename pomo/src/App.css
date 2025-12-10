@@ -24,6 +24,13 @@
   font-size: 44px;
 }
 
+#voltarIco {
+  position: absolute;
+  top: 42px;
+  left: 52px;
+  cursor: pointer;
+}
+
 .ativo {
   background: linear-gradient(-330deg, #195fec, #091fe2b4);
   box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
@@ -142,7 +149,8 @@ button {
     margin-left: 18px;
     max-width: 350px;
   }
-  #box-botoes button{
+
+  #box-botoes button {
     width: auto;
     height: auto;
     font-size: 18px;

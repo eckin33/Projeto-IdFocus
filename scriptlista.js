@@ -174,7 +174,14 @@ function clickDireito(x, y) {
                     fecharInput.remove()
                     paiInput.classList.remove("active")
                 }
+                
+                function removerGuys() {
+                    paiInput.classList.remove("active")
+                    fecharInput.remove()
+                    inputEditar.remove()
 
+                }
+                
                 //Evento de Keydown, aqui o valor do "span" vai mudar de fato.
                 inputEditar.addEventListener("keydown", (e) => {
                     if (e.key === "Enter") {
@@ -199,12 +206,6 @@ function clickDireito(x, y) {
                         removerGuys()
                     }
                 })
-                function removerGuys() {
-                    paiInput.classList.remove("active")
-                    fecharInput.remove()
-                    inputEditar.remove()
-
-                }
             }
         })
     }

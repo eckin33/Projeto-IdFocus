@@ -117,7 +117,6 @@ function App() {
       setMinuto(25)
       setSegundo(0)
   }
-  
 
   return (
     <>
