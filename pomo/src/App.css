@@ -104,6 +104,8 @@ button {
 
 #mesageDiv {
   position: absolute;
+  font-size: 16px;
+  text-shadow: -2px 2px 7px #ffffff70;
   left: 38px;
   bottom: 28px;
 }

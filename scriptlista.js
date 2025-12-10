@@ -181,10 +181,11 @@ function clickDireito(x, y) {
                     inputEditar.remove()
 
                 }
-                
+
                 //Evento de Keydown, aqui o valor do "span" vai mudar de fato.
                 inputEditar.addEventListener("keydown", (e) => {
                     if (e.key === "Enter") {
+                        alert('aaa')
 
                         //Armazena a tarefa antiga e a nova
                         const textoAntigo = filhoAlvo.innerText.trim()
@@ -202,8 +203,11 @@ function clickDireito(x, y) {
                             lista[index].texto = novoTexto
                             salvarListaNoLocalStorage()
                         }
+                        fecharInput.remove()
+                        inputEditar.remove()
+                        paiInput.classList.remove("active")
 
-                        removerGuys()
+                        //removerGuys()
                     }
                 })
             }

@@ -47,6 +47,7 @@ function App() {
           clearInterval(timer)
           setFoco(false)
           setRest(false)
+          setAtivo(false)
 
           return
         }
@@ -66,6 +67,10 @@ function App() {
   //Funções controle
   const alternarAtivo = () => {
     setAtivo(!ativo) // Forma mais curta de inverter true/false
+    if(minuto == 0 && segundo == 0){
+      setAtivo(false)
+      inciarFoco()
+    }
   }
 
   const inciarPausa = () => {
@@ -124,7 +129,7 @@ function App() {
 
       <div id='mesageDiv'>
         {foco ? "Você está no foco agora" : ""}
-        {rest ? "Você está no descanso agora, aproveita kkk" : ""}
+        {rest ? "Você está no descanso agora" : ""}
       </div>
 
       <Display
