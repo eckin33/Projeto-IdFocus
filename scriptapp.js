@@ -24,21 +24,15 @@ if(token){
     }
 }
 
-
-
 const nome = localStorage.getItem("userLogado");
 const cidadeUserRecuperada = JSON.parse(localStorage.getItem("cidadeUser")) //Metodo Tradicional
 const cidadeSalva = JSON.parse(localStorage.getItem("cidade_brave")) //Metodo Brave
 const Latitude = JSON.parse(localStorage.getItem("latitude"))
 const longitude = JSON.parse(localStorage.getItem("longitude"))  // Latitude e Longitude que veio do index.html
 
-console.log(cidadeUserRecuperada)
-
 async function obterCidadeUsuario() {
-    console.log(typeof (Latitude))
     const apiKey = '8c23ddee47c2f7b5b6beee49428d169a'
     const url = `https://api.openweathermap.org/geo/1.0/reverse?lat=${Latitude}&lon=${longitude}&appid=${apiKey}`
-
 
     const resposta = await fetch(url);
     const dados = await resposta.json();
@@ -50,8 +44,6 @@ async function obterCidadeUsuario() {
 
     const respostaBuscaCidade = await fetch(urlCidade);    // linha 23
     const dadosBuscaCidade = await respostaBuscaCidade.json();
-
-    console.log(dadosBuscaCidade)
 
     if (dadosBuscaCidade.cod === 200) {
         mostrarInfos({
@@ -70,28 +62,24 @@ async function obterCidadeUsuario() {
         document.getElementById('spanNomeCidade').innerHTML = `${dadosBuscaCidade.city}`;
         document.getElementById('spanTempo').innerHTML = `${dadosBuscaCidade.description}`;
         document.getElementById('spanTemperatura').innerHTML = `${dadosBuscaCidade.temp.toFixed(1).toString().replace('.', ',')}<sup>°</sup>`;
-        console.log(typeof (dadosBuscaCidade.temp), dadosBuscaCidade.temp)
-
+    
         let frasesTemperatura20mais27menos =
             Array(
                 'Tá tão de boa hoje que nem o capeta, nem o pinguim se manifestaram hoje.',
                 'Clima ta bão hoje, sai do PC meu fi',
                 'Clima ta bangu'
             )
-
         let frasesTemperatura20menos =
             Array(
                 'Se for sair leva blusa de fri, pq ta fri viu 😉',
                 'vai por uma meia nesse pé, ta frio 😉',
                 'Um dia frio, um bom lugar pra ler um livro...'
-
             )
         let frasesTemperatura28mais =
             Array(
                 'Nesse calor como sua bunda, né? (Estou me referindo ao suor, ok?)',
                 'Ta tão quente que se correr, derrete, se parar, assa.',
                 'Ja da pra fritar um ovo no asfalto.'
-
             )
 
         let escolherFraseClima28mais = Math.floor(Math.random() * frasesTemperatura28mais.length)
@@ -110,7 +98,6 @@ async function obterCidadeUsuario() {
 }
 
 obterCidadeUsuario()
-
 
 let frasesRecepcao =
     Array('Bem vindo ' + nome,
@@ -134,11 +121,6 @@ function listaIr() {
 function registroIr() {
     window.location.href = 'registro.html'
 }
-
-//console.log(frasesRecepcao,escolher)
-console.log(frasesRecepcao[escolher])
-
-
 
 setTimeout(() => {
 
@@ -178,7 +160,6 @@ setTimeout(() => {
                 document.getElementById('spanNomeCidade').innerHTML = `${dadosBuscaCidade_brave.city}`;
                 document.getElementById('spanTempo').innerHTML = `${dadosBuscaCidade_brave.description}`;
                 document.getElementById('spanTemperatura').innerHTML = `${dadosBuscaCidade_brave.temp.toFixed(1).toString().replace('.', ',')}<sup>°</sup>`;
-                console.log(typeof (dadosBuscaCidade_brave.temp), dadosBuscaCidade_brave.temp)
 
                 let frasesTemperatura20mais27menos =
                     Array(
@@ -186,20 +167,17 @@ setTimeout(() => {
                         'Clima ta bão hoje, sai do PC meu fi',
                         'Clima ta bangu'
                     )
-
                 let frasesTemperatura20menos =
                     Array(
                         'Se for sair leva blusa de frio 😉',
                         'vai por uma meia nesse pé, ta frio 😉',
                         'Um dia frio, um bom lugar pra ler um livro...'
-
                     )
                 let frasesTemperatura28mais =
                     Array(
                         'Nesse calor como sua bunda, né? (Estou me referindo ao suor, ok?)',
                         'Ta tão quente que se correr, derrete, se parar, assa.',
                         'Ja da pra fritar um ovo no asfalto.'
-
                     )
 
                 let escolherFraseClima28mais = Math.floor(Math.random() * frasesTemperatura28mais.length)
@@ -215,13 +193,25 @@ setTimeout(() => {
                     document.getElementById('spanLegenda').textContent = frasesTemperatura28mais[escolherFraseClima28mais]
                 }
             }
-
         }
         obterCidadeUsuarioMetodoBrave()
 
-
-    } else {
-        console.log('ta ocupado depois dos segundos') //Deu certo, Ja ta na tela os dados
     }
-
 }, 3000)
+
+function logout(){
+    localStorage.removeItem("token")
+    localStorage.removeItem("userLogado")
+    window.location.href = 'login.html'
+}
+
+function cerimony(){
+    let text = document.getElementById('text-l')
+    let icon = document.getElementById('logout-icon')
+    text.classList.add('startTextAnim')
+    icon.classList.add('startIconAnim')
+
+    setTimeout(() =>{
+        logout()
+    }, 2200)
+}

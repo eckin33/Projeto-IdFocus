@@ -69,31 +69,59 @@
                 </div>
 
                 <button type="submit" id="go" ">
-                    <span class="spinner-border spinner-border-sm" aria-hidden="true" id="load"></span>
+                    <span class=" spinner-border spinner-border-sm" aria-hidden="true" id="load"></span>
                     Cadastrar</button>
             </form>
             <span id="jaTem">Já tem uma conta? <a href="login.html" id="a_jaTem">Logar</a></span>
         </div>
     </div>
-    <div class=" toast-container position-fixed bg-sucess top-0 end-0 p-3">
-                    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                        <div class="toast-body">
-                            Registro realizado com sucesso! redirecionando para o login...
-                        </div>
-                    </div>
+    
+    
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-secondary-subtle text-secondary-emphasis">
+                <img src="imagens/idf-favicon.png" class="rounded me-2">
+                <strong class="me-auto">IdFocus</strong>
+                <small>1s atrás</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body bg-success-subtle text-success-emphasis">
+                Registro realizado com sucesso! redirecionando para o Login.
+            </div>
+        </div>
     </div>
-    <div class=" toast-container position-fixed bg-sucess top-0 end-0 p-3">
-                    <div id="liveToast2" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                        <div class="toast-body">
-                            houve um erro no registro. Tente novamente.
-                        </div>
-                    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast2" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-secondary-subtle text-secondary-emphasis">
+                <img src="imagens/idf-favicon.png" class="rounded me-2">
+                <strong class="me-auto">IdFocus</strong>
+                <small>1s atrás</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body text-danger-emphasis">
+                Houve um erro. Tente novamente mais tarde.
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast3" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-secondary-subtle text-secondary-emphasis">
+                <img src="imagens/idf-favicon.png" class="rounded me-2">
+                <strong class="me-auto">IdFocus</strong>
+                <small>1s atrás</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body text-danger-emphasis">
+                Erro! Email já cadastrado.
+            </div>
+        </div>
     </div>
 </body>
 
 <script>
     let load = document.getElementById("load");
     load.style.display = "none";
+
     document.getElementById("formCadastro").addEventListener("submit", async (e) => {
         e.preventDefault();
 
@@ -111,8 +139,6 @@
             body: JSON.stringify(formData)
         });
 
-        
-
         const result = await response.json();
         console.log(result);
 
@@ -126,10 +152,12 @@
 
         } else {
             load.style.display = "none";
-            new bootstrap.Toast(document.getElementById('liveToast2')).show();
+            if(result.error == "Email já cadastrado."){
+                new bootstrap.Toast(document.getElementById('liveToast3')).show();
+            }else{
+                new bootstrap.Toast(document.getElementById('liveToast2')).show();
+            }
         }
-
-
     });
 </script>
 

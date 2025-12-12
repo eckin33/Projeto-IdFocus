@@ -17,13 +17,10 @@ document.getElementById("formLogin").addEventListener("submit", async (e) => {
     });
 
     const result = await response.json();
-    console.log(result);
-
+    
     // Verificar se o registro foi bem-sucedido
     if (result.token) {
-
         load.style.display = 'none'
-
         let meuToken = result.token
         let userName = result.user.name
 
@@ -33,7 +30,12 @@ document.getElementById("formLogin").addEventListener("submit", async (e) => {
         window.location.href = "app.html"
     } else {
         load.style.display = 'none'
-        alert("Login falhou. Tente novamente.");
+        if(result.message == "Email não encontrado."){
+            new bootstrap.Toast(document.getElementById('liveToastEmail')).show();
+        } 
+        if(result.message == "Senha incorreta"){
+            new bootstrap.Toast(document.getElementById('liveToastPass')).show()
+        }
         return;
     }
 });
@@ -42,13 +44,11 @@ function pegarLocUser() {
     navigator.geolocation.getCurrentPosition(function (position) {
         const latitude = position.coords.latitude
         const longitude = position.coords.longitude
-        console.log("Latitude: ", latitude, "Longitude: ", longitude)
 
         localStorage.setItem("latitude", JSON.stringify(latitude))
         localStorage.setItem("longitude", JSON.stringify(longitude))
     })
 
 }
-console.log(navigator.userAgent)
 pegarLocUser()
 

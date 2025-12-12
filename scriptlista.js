@@ -22,7 +22,6 @@ if(token){
     }
 }
 
-
 let lista = JSON.parse(localStorage.getItem("lista")) || []
 const tarefas = JSON.parse
 
@@ -86,8 +85,19 @@ function renderizarLista() {
         //evento(mouse botao direito)
         li.oncontextmenu = (e) => {
             alvo = e.target
+            //Previne o menu do navegador (inspecionar e tal)
+            e.preventDefault()
 
-            console.log('elemento: ', alvo)
+            //Coordenadas do click
+            let cordX = e.pageX
+            let cordY = e.pageY
+
+            //Vai como parâmetro da função... Que lindo
+            clickDireito(cordX, cordY)
+        }
+
+        span.oncontextmenu = (e) => {
+            alvo = e.target
             //Previne o menu do navegador (inspecionar e tal)
             e.preventDefault()
 
@@ -141,10 +151,14 @@ function clickDireito(x, y) {
             }
             //Se foi no menu, vau criar um input pra editar a tarefa.
             if (event.target == menu) {
-
                 //"alvo" foi declarado la em cima, é o alvo do click direito.
-                //O alvo mesmo foi o "li", ai a gente pega o filho dele, o "span".
-                let filhoAlvo = alvo.querySelector("span")
+                let filhoAlvo = null
+                 
+                if(alvo.querySelector("span")){
+                    filhoAlvo = alvo.querySelector("span")
+                }else{
+                    filhoAlvo = alvo
+                }
 
                 //Depois criamos o input, adicionamos a classe que na no css
                 let inputEditar = document.createElement("input")
@@ -185,21 +199,22 @@ function clickDireito(x, y) {
                 //Evento de Keydown, aqui o valor do "span" vai mudar de fato.
                 inputEditar.addEventListener("keydown", (e) => {
                     if (e.key === "Enter") {
-                        alert('aaa')
-
                         //Armazena a tarefa antiga e a nova
-                        const textoAntigo = filhoAlvo.innerText.trim()
-                        const novoTexto = inputEditar.value.trim()
+                        let textoAntigo = filhoAlvo.innerText.trim()
+                        let novoTexto = inputEditar.value.trim()
 
-                        if (novoTexto === "") return
-
+                        if(textoAntigo == novoTexto || novoTexto == ''){                    
+                            removerGuys()    
+                            return
+                        }
+                            
                         //atualiza visualmente
                         filhoAlvo.innerText = novoTexto
 
                         //Atualiza no localStorage
-                        const index = lista.findIndex(item => item.texto === textoAntigo)
+                        let index = lista.findIndex(item => item.texto === textoAntigo)
 
-                        if (index !== 1) {
+                        if (index !== -1) {
                             lista[index].texto = novoTexto
                             salvarListaNoLocalStorage()
                         }

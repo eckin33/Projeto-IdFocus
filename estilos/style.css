@@ -18,6 +18,7 @@ body > header > .left > h1{
     font-size: 6em;
     color: #fae9e9;
     text-indent: 45px;
+    font-weight: 700;
 }
 .left{
     display: flex;
@@ -30,9 +31,24 @@ header{
     display:flex;
     justify-content: space-between;
     align-items: center;
-    margin: auto auto;
+    margin: 35px auto auto auto;
 }
-
+#menuApp{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    cursor: pointer;
+    color: #a19c9c;
+    font-size:32px;
+    border: none;
+    background-color: transparent;
+    border-radius: 50%;
+    padding: 7px;
+    transition: background-color 2.s ease-in-out;
+}
+#menuApp:hover{
+    background-color: #d9d9d92a;
+}
 #pSection{
     color: #D9D9D9;
     margin: 20px 0 20px 45px;
@@ -59,6 +75,95 @@ header{
     justify-content: space-between;
     align-items: center;
 }
+.colunasPrincipal h2{
+    font-size: 24px;
+    font-weight: 700;
+    color: #D9D9D9;
+}
+.offcanvas-body, .offcanvas-header{
+    background-color: #2b2a2a;
+    color: #D9D9D9;
+    position: relative;
+}
+.offcanvas-header h5{
+    font-size: 32px;
+}
+#offcanvas-body-logout{
+    position: absolute;
+    color: #D9D9D9;
+    width: 100%;
+    margin: 0 auto;
+    bottom: 5px;
+    border-top: 1px solid #D9D9D9;
+}
+
+#logout-icon-text{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 90%;
+    padding: 20px 0;
+    margin: 0 0px;
+    font-size: 24px;
+}
+#logout-icon{
+    position: relative;
+}
+#logout-icon-text p{
+    margin: 0;
+    text-decoration: underline;
+    cursor: pointer;
+    position: relative;
+}
+.startTextAnim{
+    animation-delay: .2s;
+    animation-name: textAnim;
+    animation-duration: .9s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+
+}
+.startIconAnim{
+    animation-delay: 1.1s;
+    animation-name: iconAnim;
+    animation-duration: .8s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+    
+}
+#logout-icon{
+    display: block;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+@keyframes textAnim {
+    from{
+        top: 0px;
+        opacity: 1;
+    }
+    to{
+        top: 70px;
+        opacity: .6;
+    }
+}
+@keyframes iconAnim {
+    from{
+        left: 0px;
+        opacity: 1;
+    }
+    to{
+        left: 250px;
+        opacity: .6;
+    }
+}
+
+
+
+
+
 .ultima{
     border: none;
 }
@@ -78,6 +183,7 @@ header{
     cursor: pointer;
     transition: transform .3s ease;
     background-color: #3C6E71;
+    box-shadow: 0 8px 20px #4e8a8d21;
     color: white;
 }
 .btnLista:hover{
@@ -159,6 +265,10 @@ span{
     box-sizing:border-box;
 
     }
+    #menuApp{
+        top: 20px;
+        left: 20px;
+    }
     .left{
         flex-flow: column;
         text-align: left;
@@ -223,7 +333,7 @@ span{
         display:flex;
         flex-flow: column nowrap;
         justify-content: space-between;
-        margin: auto auto;
+        margin: 40px auto auto auto;
     }
     #pSection{
         color: #D9D9D9;
