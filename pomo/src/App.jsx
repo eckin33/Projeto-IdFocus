@@ -15,7 +15,7 @@ function App() {
   const receberDados = (dados) => {
     console.log("Recebido no App:", dados);
 
-    // Converter para número
+    // Converter
     const foco = parseInt(dados.ifoco);
     const descanso = parseInt(dados.irest);
 
@@ -25,7 +25,7 @@ function App() {
       return;
     }
 
-    // Atualiza o timer para o novo foco
+    // Atualiza o timer
     setAtivo(false);
     setMinuto(foco);
     setSegundo(0);
@@ -33,7 +33,6 @@ function App() {
     localStorage.setItem('foco', foco)
     localStorage.setItem('rest', descanso)
 
-    // (Opcional) você também pode salvar o descanso pra usar depois
   };
 
   //Timer
@@ -66,7 +65,7 @@ function App() {
 
   //Funções controle
   const alternarAtivo = () => {
-    setAtivo(!ativo) // Forma mais curta de inverter true/false
+    setAtivo(!ativo) 
     if(minuto == 0 && segundo == 0){
       setAtivo(false)
       inciarFoco()
@@ -75,7 +74,6 @@ function App() {
 
   const inciarPausa = () => {
     if(localStorage.getItem('rest') !== null){
-      alert('Iniciando Pausa Personalizada')
       let rest = parseInt(localStorage.getItem('rest'))
       setAtivo(false)
       setFoco(false)
@@ -85,7 +83,6 @@ function App() {
       
     } else {
       setFoco(false)
-      alert('iniciando pausa Default')
       setAtivo(false)
       setRest(true)
       setMinuto(5)
@@ -95,8 +92,6 @@ function App() {
 
   const inciarFoco = () => {
     if(localStorage.getItem('foco') !== null){
-      alert('iniciando foco personalizado')
-
       let foco = parseInt(localStorage.getItem('foco'))
       setAtivo(false)
       setRest(false)
@@ -104,7 +99,6 @@ function App() {
       setMinuto(foco)
       setSegundo(0)
     }else{
-      alert('iniciando foco def')
       setAtivo(false)
       setRest(false)
       setFoco(true)
