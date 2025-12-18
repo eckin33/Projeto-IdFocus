@@ -1,3 +1,5 @@
+import { rastrearEvento } from "./rastreador.js";
+
 let load = document.getElementById('load')
 load.style.display = 'none'
 document.getElementById("formLogin").addEventListener("submit", async (e) => {
@@ -17,23 +19,31 @@ document.getElementById("formLogin").addEventListener("submit", async (e) => {
     });
 
     const result = await response.json();
-    
+
     // Verificar se o registro foi bem-sucedido
     if (result.token) {
         load.style.display = 'none'
         let meuToken = result.token
         let userName = result.user.name
+        let userEmail = result.user.email
 
         localStorage.setItem("userLogado", userName)
         localStorage.setItem("token", meuToken)
 
+        //Teste nova função
+        rastrearEvento("USER_LOGIN", {
+            metadada: {
+                login: 1
+            }
+        })
+
         window.location.href = "app.html"
     } else {
         load.style.display = 'none'
-        if(result.message == "Email não encontrado."){
+        if (result.message == "Email não encontrado.") {
             new bootstrap.Toast(document.getElementById('liveToastEmail')).show();
-        } 
-        if(result.message == "Senha incorreta"){
+        }
+        if (result.message == "Senha incorreta") {
             new bootstrap.Toast(document.getElementById('liveToastPass')).show()
         }
         return;

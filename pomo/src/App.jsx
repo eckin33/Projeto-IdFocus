@@ -1,9 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
 import Display from './display.jsx'
 import './App.css'
+import { rastrearEvento } from './rastreador/rastreador.js'
 
 function App() {
 
+  function gerarId() {
+    return crypto.randomUUID()
+  }
 
   const [ativo, setAtivo] = useState(false)
   let [minuto, setMinuto] = useState(0)
@@ -39,10 +43,32 @@ function App() {
   useEffect(() => {
 
     if (ativo) {
-      
+
       const timer = setInterval(() => {
 
         if (minuto === 0 && segundo === 0) {
+
+          if (localStorage.getItem('sessaoPersonalizada') !== null) {
+            let sessaoPersonalizada = JSON.parse(localStorage.getItem('sessaoPersonalizada'))
+            rastrearEvento('POMODORO_END', {
+
+              idSessao: sessaoPersonalizada.idSessao,
+              tipo: "personalizada",
+              reason: "completed"
+            })
+          }
+
+          if (localStorage.getItem('sessaoPadrao') !== null) {
+
+            let sessaoPadrao = JSON.parse(localStorage.getItem('sessaoPadrao'))
+            rastrearEvento('POMODORO_END', {
+
+              idSessao: sessaoPadrao.idSessao,
+              tipo: "padrao",
+              reason: "completed"
+            })
+          }
+
           clearInterval(timer)
           setFoco(false)
           setRest(false)
@@ -63,24 +89,119 @@ function App() {
     }
   }, [minuto, segundo, ativo,])
 
-  //Funções controle
+  const inciarFoco = () => {
+    if (localStorage.getItem('foco') !== null) {
+      let foco = parseInt(localStorage.getItem('foco'))
+      setAtivo(false)
+      setRest(false)
+      setFoco(true)
+      setMinuto(foco)
+      setSegundo(0)
+
+      let idSessao = gerarId()
+
+      rastrearEvento("POMODORO_START", {
+        idSessao: idSessao,
+        tipo: "personalizado",
+        tempoPlanejado: foco
+      })
+
+      let sessaoPersonalizada = localStorage.setItem("sessaoPersonalizada",
+        JSON.stringify(
+          {
+            idSessao: idSessao,
+            tipo: "personalizado",
+            tempoPlanejado: foco
+          }))
+      console.log(sessaoPersonalizada)
+
+    } else {
+      setAtivo(false)
+      setRest(false)
+      setFoco(true)
+      setMinuto(25)
+      setSegundo(0)
+
+      let idSessao = gerarId()
+
+      rastrearEvento("POMODORO_START", {
+        idSessao: idSessao,
+        tipo: "padrao",
+        tempoPlanejado: 25
+      })
+
+      let sessaoPadrao = localStorage.setItem("sessaoPadrao",
+        JSON.stringify({
+          idSessao: idSessao,
+          tipo: "padrao",
+          tempoPlanejado: 25
+        }))
+      console.log(sessaoPadrao)
+    }
+    if (localStorage.getItem('sessaoPadrao') !== null && localStorage.getItem('sessaoPersonalizada') !== null) {
+      localStorage.removeItem('sessaoPadrao')
+    }
+  }
+
   const alternarAtivo = () => {
-    setAtivo(!ativo) 
-    if(minuto == 0 && segundo == 0){
+    setAtivo(!ativo)
+
+    if (!ativo) {
+      //Retomou
+      console.log('believe.')
+    } else {
+      //Pausou
+
+      if (localStorage.getItem('sessaoPadrao') !== null && localStorage.getItem('sessaoPersonalizada') !== null) {
+        localStorage.removeItem('sessaoPadrao')
+      }
+      if (localStorage.getItem("foco") !== null && localStorage.getItem("rest") && localStorage.getItem("sessaoPadrao") !== null) {
+        localStorage.removeItem("sessaoPadrao")
+      }
+
+      if (localStorage.getItem('sessaoPersonalizada') !== null) {
+
+        let sessaoPersonalizada = JSON.parse(localStorage.getItem('sessaoPersonalizada'))
+
+        rastrearEvento("POMODORO_END", {
+          idSessao: sessaoPersonalizada.idSessao,
+          tipo: "personalizada",
+          reason: "paused"
+        })
+
+      }
+
+      if (localStorage.getItem('sessaoPadrao') !== null) {
+
+        let sessaoPadrao = JSON.parse(localStorage.getItem('sessaoPadrao'))
+
+        rastrearEvento('POMODORO_END', {
+          idSessao: sessaoPadrao.idSessao,
+          tipo: "padrao",
+          reason: "paused"
+        })
+      }
+
+    }
+
+    if (minuto == 0 && segundo == 0) {
+      //LOGICA DE QUANDO ACABAR
       setAtivo(false)
       inciarFoco()
     }
   }
 
   const inciarPausa = () => {
-    if(localStorage.getItem('rest') !== null){
+    if (localStorage.getItem('rest') !== null) {
+
       let rest = parseInt(localStorage.getItem('rest'))
+
       setAtivo(false)
       setFoco(false)
       setRest(true)
       setMinuto(rest)
       setSegundo(0)
-      
+
     } else {
       setFoco(false)
       setAtivo(false)
@@ -90,31 +211,19 @@ function App() {
     }
   }
 
-  const inciarFoco = () => {
-    if(localStorage.getItem('foco') !== null){
-      let foco = parseInt(localStorage.getItem('foco'))
-      setAtivo(false)
-      setRest(false)
-      setFoco(true)
-      setMinuto(foco)
-      setSegundo(0)
-    }else{
-      setAtivo(false)
-      setRest(false)
-      setFoco(true)
-      setMinuto(25)
-      setSegundo(0)
-
-    }
-  }
 
   const reiniciar = () => {
-    
-      setAtivo(false)
-      setFoco(false)
-      setRest(false)
-      setMinuto(25)
-      setSegundo(0)
+
+    setAtivo(false)
+    setFoco(false)
+    setRest(false)
+    setMinuto(25)
+    setSegundo(0)
+
+    rastrearEvento("POMODORO_RESTART", {
+      tipo: "padrao",
+      tempo: 25
+    })
   }
 
   return (

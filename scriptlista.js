@@ -1,10 +1,12 @@
+import { rastrearEvento } from "./rastreador.js";
+
 const token = localStorage.getItem("token");
 
 if (!token) {
     window.location.href = "./login.html";
 }
-if(token){
-    try{
+if (token) {
+    try {
         const payload = JSON.parse(atob(token.split('.')[1]));
         const exp = payload.exp;
         const currentTime = Math.floor(Date.now() / 1000);
@@ -15,7 +17,7 @@ if(token){
             window.location.href = "./login.html";
         }
 
-    }catch(error){
+    } catch (error) {
         console.error("Token inválido:", error);
         localStorage.removeItem("token");
         window.location.href = "./login.html";
@@ -50,12 +52,26 @@ function renderizarLista() {
         checkbox.style.width = '23px'
         checkbox.style.height = '23px'
 
-        checkbox.onclick = () => {
+        // checkbox.onclick = () => {
+        //     lista[index].marcado = checkbox.checked
+        //     salvarListaNoLocalStorage()
+        //     renderizarLista()
+
+        // }
+
+        checkbox.addEventListener('click', () => {
             lista[index].marcado = checkbox.checked
+
+            rastrearEvento("TASK_TOGGLED", {
+                taskId: lista[index].idTarefa,
+                name: item.texto,
+                marcado: checkbox.checked
+            })
+            
             salvarListaNoLocalStorage()
             renderizarLista()
+        })
 
-        }
         if (checkbox.checked === true) {
             li.style.textDecoration = 'line-through'
             salvarListaNoLocalStorage()
@@ -71,11 +87,25 @@ function renderizarLista() {
         const btnDelete = document.createElement("button")
         btnDelete.textContent = "delete"
         btnDelete.classList.add('material-symbols-outlined')
-        btnDelete.onclick = () => {
+
+        // btnDelete.onclick = () => {
+        //     lista.splice(index, 1)
+        //     salvarListaNoLocalStorage()
+        //     renderizarLista()
+        // }
+
+        btnDelete.addEventListener('click', () => {
+            let busca = lista.findIndex(item => item.texto)
+
+            rastrearEvento("TASK_DELETED", {
+                taskId: lista[busca].idTarefa,
+                name: item.texto
+            })
             lista.splice(index, 1)
             salvarListaNoLocalStorage()
             renderizarLista()
-        }
+        })
+
 
         li.appendChild(checkbox)
         li.appendChild(span)
@@ -111,15 +141,24 @@ function renderizarLista() {
     })
 }
 
+function gerarId() {
+    return crypto.randomUUID()
+}
+
 function adicionarItem() {
     const input = document.getElementById("addInput")
+    let idTarefa = gerarId()
     const texto = input.value.trim()
     if (texto === "") {
         alert("Digite uma tarefa!")
         return
     }
 
-    lista.push({ texto: texto, marcado: false })
+    lista.push({idTarefa, texto: texto, marcado: false })
+    rastrearEvento("TASK_CREATED", {
+        taskId: idTarefa,
+        texto
+    })
     salvarListaNoLocalStorage()
     renderizarLista()
     input.value = ""
@@ -149,20 +188,20 @@ function clickDireito(x, y) {
             if (event.target !== menu) {
                 menu.remove()
             }
-            //Se foi no menu, vau criar um input pra editar a tarefa.
+            //Se foi no menu, vai criar um input pra editar a tarefa.
             if (event.target == menu) {
                 //"alvo" foi declarado la em cima, é o alvo do click direito.
                 let filhoAlvo = null
-                 
-                if(alvo.querySelector("span")){
+
+                if (alvo.querySelector("span")) {
                     filhoAlvo = alvo.querySelector("span")
-                }else{
+                } else {
                     filhoAlvo = alvo
                 }
 
                 //Depois criamos o input, adicionamos a classe que na no css
                 let inputEditar = document.createElement("input")
-                inputEditar.attributes = 'text'
+                inputEditar.setAttribute('text', 'text') 
                 inputEditar.classList.add("inputEditar")
 
                 //Efeito blur atrás do input
@@ -183,12 +222,19 @@ function clickDireito(x, y) {
                 document.body.appendChild(fecharInput)
 
                 //Função de fechamento
-                fecharInput.onclick = () => {
-                    inputEditar.remove()
-                    fecharInput.remove()
-                    paiInput.classList.remove("active")
-                }
-                
+                 fecharInput.onclick = () => {
+                     inputEditar.remove()
+                     fecharInput.remove()
+                     paiInput.classList.remove("active")
+                 }
+
+                // fecharInput.addEventListener('click', () => {
+                //     inputEditar.remove()
+                //     fecharInput.remove()
+                //     paiInput.classList.remove("active")
+                // })
+
+
                 function removerGuys() {
                     paiInput.classList.remove("active")
                     fecharInput.remove()
@@ -203,11 +249,11 @@ function clickDireito(x, y) {
                         let textoAntigo = filhoAlvo.innerText.trim()
                         let novoTexto = inputEditar.value.trim()
 
-                        if(textoAntigo == novoTexto || novoTexto == ''){                    
-                            removerGuys()    
+                        if (textoAntigo == novoTexto || novoTexto == '') {
+                            removerGuys()
                             return
                         }
-                            
+
                         //atualiza visualmente
                         filhoAlvo.innerText = novoTexto
 
@@ -217,6 +263,12 @@ function clickDireito(x, y) {
                         if (index !== -1) {
                             lista[index].texto = novoTexto
                             salvarListaNoLocalStorage()
+                            rastrearEvento("TASK_EDITED", {
+                                
+                                TaskId: lista[index].idTarefa,
+                                textoAntigo,
+                                novoTexto
+                            })
                         }
                         fecharInput.remove()
                         inputEditar.remove()

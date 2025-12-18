@@ -1,3 +1,5 @@
+import { rastrearEvento } from "./rastreador.js";
+
 const token = localStorage.getItem("token");
 
 if (!token) {
@@ -33,10 +35,6 @@ let desc = document.getElementById('idesc')
 let valor = document.getElementById('ivalor')
 let id = 0
 
-/*
-Fevereiro tem 28 dias, outros meses tem 31 ou 30. 
-Essa foi a solução que eu encontrei pra resolver mas provavelmente tem jeito mais facil.  
-*/
 
 _mes.addEventListener('change', () => {
     const valorSelecionado = _mes.value
@@ -80,11 +78,18 @@ document.getElementById('btnAdd').addEventListener('click', () => {
     localStorage.setItem('listaDespesas', JSON.stringify(registros)) //Salva a lista. Agora consulta.html pode recuperar no LocalStorage.
 
     desc.value = ''
-    valor.value = ''
 
+    rastrearEvento("EXPENSE_ADDED", {
+        tipoDespesa: despesa.tipo,
+        valorDespesa: despesa.valor
+    })
 })
 
 function consulta() {
     window.location.href = 'consulta.html'
 }
+
+document.getElementById('navBtn').addEventListener('click', () =>{
+    consulta()
+})
 
