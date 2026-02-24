@@ -204,6 +204,9 @@ function clickDireito(x, y) {
                 inputEditar.setAttribute('text', 'text') 
                 inputEditar.classList.add("inputEditar")
 
+                //Abre o campo editar já com o texto antigo (melhor UX)
+                inputEditar.value = filhoAlvo.innerText.trim()
+
                 //Efeito blur atrás do input
                 let paiInput = document.createElement("div")
                 paiInput.classList.add("modal-overlay")
@@ -211,6 +214,9 @@ function clickDireito(x, y) {
 
                 paiInput.appendChild(inputEditar)
                 document.body.appendChild(paiInput)
+
+                //Após tudo carregado, focar no input (Melhor UX)
+                inputEditar.focus()
 
                 //fechar o menu editar
                 menu.remove()
